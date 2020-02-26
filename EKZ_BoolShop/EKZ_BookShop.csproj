@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\Account.cs" />
     <Compile Include="Entity\Author.cs" />
     <Compile Include="Entity\Book.cs" />
     <Compile Include="Entity\Category.cs" />

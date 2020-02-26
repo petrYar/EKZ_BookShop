@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace EKZ_BoolShop.Entity
 {
     [Table("tblBook")]
-    class Book
+    public class Book
     {
         public Book()
         {

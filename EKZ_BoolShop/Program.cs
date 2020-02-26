@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EKZ_BoolShop.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,69 +17,23 @@ namespace EKZ_BoolShop
             bool exit = false;
             do
             {
-                Console.Clear();
-                Menu();
-                switch(Insert())
+                LogMenu();
+                switch (MenuInsert())
                 {
-                    case '1':
-                        Show();
-                        break;
-                    case '2':
-
-                        break;
-                    case '3':
-
-                        break;
-                    case '4':
-
-                        break;
-                    case '5':
-
-                        break;
-                    case '6':
-
-                        break;
-                    case '7':
-
-                        break;
-                    case '0':
-                        exit = true;
-                        break;
-                    default:
-                        Console.WriteLine("Incorrect value");
-                        break;
+                    case 1: if (LogIn()) MenuCode(); break;
+                    case 2: if (Register()) MenuCode(); break;
+                    case 0: exit = true; break;
+                    default: Console.WriteLine("Incorrect value"); break;
                 }
             } while (!exit);
-
-            //Console.WriteLine("Enter amount of users to add");
-            //int count = int.Parse(Console.ReadLine());
-            //InsertTransactiondatarandomUser(count);
         }
-
-        //static void InsertTransactiondatarandomUser(int count = 10)
-        //{
-        //    using (EFContext context = new EFContext())
-        //    {
-        //        using (TransactionScope scope = new TransactionScope())
-        //        {
-        //            List<User> users = new List<User>();
-        //            for (int i = 0; i < count; i++)
-        //            {
-        //                users.Add(new User()
-        //                {
-        //                    Email = "fdasasdsa@gmail.com",
-        //                    Passwords = "jnafsdsjndafjkl"
-        //                });
-        //            }
-        //            context.Users.AddRange(users);
-        //            context.SaveChanges();
-
-        //            scope.Complete();
-        //        }
-        //    }
-
-        //}
-        static public void Menu()
+        static public void LogMenu()
+        {
+            Console.WriteLine("1 - LogIn");
+            Console.WriteLine("2 - Register");
+            Console.WriteLine("0 - Exit");
+        }
+        static public void MenuShow()
         {
             Console.WriteLine("1 - Show");
             Console.WriteLine("2 - Add");
@@ -89,22 +44,125 @@ namespace EKZ_BoolShop
             Console.WriteLine("7 - Decommission");
             Console.WriteLine("0 - Exit");
         }
-        static public char Insert()
+        static public void MenuCode()
+        {
+            bool exit = false;
+            do
+            {
+                Console.Clear();
+                MenuShow();
+                switch (MenuInsert())
+                {
+                    case 1: Show(); break;
+                    case 2:
+
+                        break;
+                    case 3:
+
+                        break;
+                    case 4:
+
+                        break;
+                    case 5:
+
+                        break;
+                    case 6:
+
+                        break;
+                    case 7:
+
+                        break;
+                    case 0: exit = true; break;
+                    default: Console.WriteLine("Incorrect value"); break;
+                }
+            } while (!exit);
+        }
+        static public int MenuInsert()
         {
             Console.WriteLine("Enter:");
-            return Console.ReadLine().FirstOrDefault(t => t >= '0' && t <= '7');
+            return int.Parse(Console.ReadLine());
+        }
+        static public bool LogIn()
+        {
+            Console.Clear();
+
+            Console.Write("Enter login:");
+            string login = Console.ReadLine();
+            Console.WriteLine();
+
+            Console.Write("Enter password:");
+            string password = Console.ReadLine();
+            Console.WriteLine();
+
+            bool isAvailable = false;
+            using (EFContext context = new EFContext())
+            {
+                isAvailable = context.Account.Contains(new Account(login, password));
+            }
+
+            if (isAvailable)
+            {
+                Console.Write("Completed successfully");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Unsuccessfull, repeat?");
+                Console.Write("Enter 0 for exit: ");
+                switch (MenuInsert())
+                {
+                    case 0: LogIn(); break;
+                    default: break;
+                }
+                return false;
+            }
+        }
+        static public bool Register()
+        {
+            Console.Clear();
+
+            Console.Write("Enter login:");
+            string login = Console.ReadLine();
+            Console.WriteLine();
+
+            Console.Write("Enter password:");
+            string password = Console.ReadLine();
+            Console.WriteLine();
+
+            Console.Write("Repeat password:");
+            string repeatPassword = Console.ReadLine();
+            Console.WriteLine();
+
+            if (password.Equals(repeatPassword))
+            {
+                using (EFContext context = new EFContext())
+                {
+                    context.Account.Add(new Account(login,password));
+                    Console.Write("Completed successfully");
+                    return true;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Unsuccessfull, repeat?");
+                Console.Write("Enter 0 for exit: ");
+                switch (MenuInsert())
+                {
+                    case 0: Register(); break;
+                    default: break;
+                }
+                return false;
+            }
         }
         static public void Show()
         {
-
-        }
-        static public void Sho2w()
-        {
-
-        }
-        static public void Sh3ow()
-        {
-
+            using (EFContext context = new EFContext())
+            {
+                foreach (var item in context.Book)
+                {
+                    Console.WriteLine(item.Author);
+                }
+            }
         }
     }
 }

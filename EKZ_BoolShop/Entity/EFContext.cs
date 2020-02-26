@@ -13,5 +13,12 @@ namespace EKZ_BoolShop.Entity
         {
 
         }
+
+        public DbSet<Author> Author { get; set; }
+        public DbSet<Book> Book { get; set; }
+        public DbSet<Category> Category { get; set; }
+        public DbSet<Genre> Genre { get; set; }
+        public DbSet<Publisher> Publisher { get; set; }
+        public DbSet<Account> Account { get; set; }
     }
 }
