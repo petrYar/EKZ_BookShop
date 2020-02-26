@@ -27,6 +27,8 @@ namespace EKZ_BoolShop.Entity
 
         public string Price { get; set; }
 
+        public string SelfPrice { get; set; }
+
         [ForeignKey("AuthorOf")]
         public int Author { get; set; }
 
@@ -39,6 +41,8 @@ namespace EKZ_BoolShop.Entity
         public double Pages { get; set; }
 
         public int Genre { get; set; }
+
+        public DateTime DateOfPublishing { get; set; }
 
         public virtual Book Recommence { get; set; }
 
