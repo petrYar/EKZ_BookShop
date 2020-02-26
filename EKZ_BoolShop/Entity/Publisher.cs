@@ -23,5 +23,7 @@ namespace EKZ_BoolShop.Entity
         public string Name { get; set; }
         
         public string Location { get; set; }
+
+        public ICollection<Book> BookOf { get; set; }
     }
 }

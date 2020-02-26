@@ -66,12 +66,29 @@
     <Compile Include="Entity\EFContext.cs" />
     <Compile Include="Entity\Genre.cs" />
     <Compile Include="Entity\Publisher.cs" />
+    <Compile Include="Migrations\202002261900334_InitialCreate.cs" />
+    <Compile Include="Migrations\202002261900334_InitialCreate.designer.cs">
+      <DependentUpon>202002261900334_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002261915385_Initilize.cs" />
+    <Compile Include="Migrations\202002261915385_Initilize.designer.cs">
+      <DependentUpon>202002261915385_Initilize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202002261900334_InitialCreate.resx">
+      <DependentUpon>202002261900334_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002261915385_Initilize.resx">
+      <DependentUpon>202002261915385_Initilize.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

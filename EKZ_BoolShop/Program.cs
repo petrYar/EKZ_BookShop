@@ -17,6 +17,7 @@ namespace EKZ_BoolShop
             bool exit = false;
             do
             {
+                Console.Clear();
                 LogMenu();
                 switch (MenuInsert())
                 {
@@ -79,8 +80,11 @@ namespace EKZ_BoolShop
         }
         static public int MenuInsert()
         {
-            Console.WriteLine("Enter:");
-            return int.Parse(Console.ReadLine());
+            int res = 0;
+            if (int.TryParse(Console.ReadLine(), out res))
+                return res;
+            else
+                return -1;
         }
         static public bool LogIn()
         {
@@ -97,7 +101,7 @@ namespace EKZ_BoolShop
             bool isAvailable = false;
             using (EFContext context = new EFContext())
             {
-                isAvailable = context.Account.Contains(new Account(login, password));
+                isAvailable = context.Account.Any(t => t.Login == login && t.Password == password);
             }
 
             if (isAvailable)
@@ -108,7 +112,7 @@ namespace EKZ_BoolShop
             else
             {
                 Console.WriteLine("Unsuccessfull, repeat?");
-                Console.Write("Enter 0 for exit: ");
+                Console.Write("Enter 0 for repeat: ");
                 switch (MenuInsert())
                 {
                     case 0: LogIn(); break;
@@ -145,7 +149,7 @@ namespace EKZ_BoolShop
             else
             {
                 Console.WriteLine("Unsuccessfull, repeat?");
-                Console.Write("Enter 0 for exit: ");
+                Console.Write("Enter 0 for repeat: ");
                 switch (MenuInsert())
                 {
                     case 0: Register(); break;
@@ -160,7 +164,27 @@ namespace EKZ_BoolShop
             {
                 foreach (var item in context.Book)
                 {
-                    Console.WriteLine(item.Author);
+                    Console.WriteLine(String.Format("{0,5} {1,5}", "Id","Name"));
+                    Console.WriteLine(String.Format("{0,5} {1,5}", item.Id,item.Title));
+                    //Console.WriteLine("Title: " + item.Title);
+                    //Console.WriteLine("Author: " + item.AuthorOf.Name);
+                    //public int Recommence { get; set; }
+                    
+                    //public int Category { get; set; }
+
+                    //public string Price { get; set; }
+
+                    //public string SelfPrice { get; set; 
+
+                    //public string Description { get; set; }
+                    
+                    //public int Publisher { get; set; }
+                    
+                    //public double Pages { get; set; }
+
+                    //public int Genre { get; set; }
+
+                    //public DateTime DateOfPublishing { get; set; }
                 }
             }
         }

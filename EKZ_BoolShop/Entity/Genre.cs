@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EKZ_BoolShop.Entity
 {
-    [Table("tblCategory")]
+    [Table("tblGenre")]
     public class Genre
     {
         public Genre()
@@ -21,5 +21,7 @@ namespace EKZ_BoolShop.Entity
 
         [Required, StringLength(50)]
         public string Name { get; set; }
+
+        public ICollection<Book> BookOf { get; set; }
     }
 }

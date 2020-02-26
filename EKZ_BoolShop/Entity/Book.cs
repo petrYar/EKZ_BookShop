@@ -16,11 +16,14 @@ namespace EKZ_BoolShop.Entity
 
         }
 
-        [Key, ForeignKey("Recommense")]
+        [Key]
         public int Id { get; set; }
 
+        [ForeignKey("RecommenceOf")]
+        public int Recommence { get; set; }
+
         [Required, StringLength(50)]
-        public string Name { get; set; }
+        public string Title { get; set; }
 
         [ForeignKey("CategoryOf")]
         public int Category { get; set; }
@@ -44,7 +47,7 @@ namespace EKZ_BoolShop.Entity
 
         public DateTime DateOfPublishing { get; set; }
 
-        public virtual Book Recommence { get; set; }
+        public virtual Book RecommenceOf { get; set; }
 
         public virtual Category CategoryOf { get; set; }
 

@@ -9,7 +9,7 @@ namespace EKZ_BoolShop.Entity
 {
     public class EFContext : DbContext
     {
-        public EFContext() : base("EKZ_BookShop")
+        public EFContext() : base("DbConnection")
         {
 
         }
