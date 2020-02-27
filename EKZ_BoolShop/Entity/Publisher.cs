@@ -24,6 +24,6 @@ namespace EKZ_BoolShop.Entity
         
         public string Location { get; set; }
 
-        public ICollection<Book> BookOf { get; set; }
+        public virtual ICollection<Book> BookOf { get; set; }
     }
 }

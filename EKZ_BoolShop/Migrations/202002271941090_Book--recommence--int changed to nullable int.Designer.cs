@@ -7,13 +7,13 @@ namespace EKZ_BoolShop.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class Repairingdefects : IMigrationMetadata
+    public sealed partial class Bookrecommenceintchangedtonullableint : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Repairingdefects));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Bookrecommenceintchangedtonullableint));
         
         string IMigrationMetadata.Id
         {
-            get { return "202002271623555_Repairing defects"; }
+            get { return "202002271941090_Book--recommence--int changed to nullable int"; }
         }
         
         string IMigrationMetadata.Source

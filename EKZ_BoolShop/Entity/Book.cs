@@ -20,7 +20,7 @@ namespace EKZ_BoolShop.Entity
         public int Id { get; set; }
 
         [ForeignKey("RecommenceOf")]
-        public int Recommence { get; set; }
+        public int? Recommence { get; set; }
 
         [Required, StringLength(50)]
         public string Title { get; set; }

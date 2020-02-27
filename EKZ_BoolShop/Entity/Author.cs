@@ -28,6 +28,6 @@ namespace EKZ_BoolShop.Entity
         [Required, StringLength(50)]
         public string Patronymic { get; set; }
 
-        public ICollection<Book> BookOf { get; set; }
+        public virtual ICollection<Book> BookOf { get; set; }
     }
 }

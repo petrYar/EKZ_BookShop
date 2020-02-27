@@ -14,6 +14,31 @@ namespace EKZ_BoolShop
             Console.InputEncoding = Encoding.UTF8;
             Console.OutputEncoding = Encoding.UTF8;
 
+            using (EFContext con = new EFContext())
+            {
+                //Category category = new Category { Name = "Children" };
+                //con.Category.Add(category);
+                //con.Author.Add(new Author { Name = "Konan",Surname="Doil",Patronymic="Hz..." });
+                //con.Genre.Add(new Genre { Name = "Fantazy" });
+                //con.Publisher.Add(new Publisher { Name = "BooksForChildrens" });
+                con.Book.Add(
+                    new Book
+                    {
+                        Recommence = null,
+                        Title = "Smth",
+                        Category = con.Category.First(t => t.Name == "Children").Id,
+                        Price = "2543",
+                        SelfPrice = "2343",
+                        Author = con.Author.First(t => t.Name == "Konan").Id,
+                        Description = "Smth",
+                        Publisher = con.Publisher.First(t => t.Name == "BooksForChildrens").Id,
+                        Pages = 56,
+                        Genre = con.Genre.First(t => t.Name == "Fantastic").Id,
+                        DateOfPublishing = DateTime.Now
+                    });
+                con.SaveChanges();
+            }
+
             bool exit = false;
             do
             {
@@ -141,7 +166,7 @@ namespace EKZ_BoolShop
             {
                 using (EFContext context = new EFContext())
                 {
-                    context.Account.Add(new Account(login,password));
+                    context.Account.Add(new Account(login, password));
                     Console.Write("Completed successfully");
                     context.SaveChanges();
                     return true;
@@ -189,6 +214,7 @@ namespace EKZ_BoolShop
                         item.Pages,
                         item.GenreOf.Name,
                         item.DateOfPublishing));
+                    Console.Read();
                 }
             }
         }
