@@ -143,6 +143,7 @@ namespace EKZ_BoolShop
                 {
                     context.Account.Add(new Account(login,password));
                     Console.Write("Completed successfully");
+                    context.SaveChanges();
                     return true;
                 }
             }
@@ -164,27 +165,30 @@ namespace EKZ_BoolShop
             {
                 foreach (var item in context.Book)
                 {
-                    Console.WriteLine(String.Format("{0,5} {1,5}", "Id","Name"));
-                    Console.WriteLine(String.Format("{0,5} {1,5}", item.Id,item.Title));
-                    //Console.WriteLine("Title: " + item.Title);
-                    //Console.WriteLine("Author: " + item.AuthorOf.Name);
-                    //public int Recommence { get; set; }
-                    
-                    //public int Category { get; set; }
-
-                    //public string Price { get; set; }
-
-                    //public string SelfPrice { get; set; 
-
-                    //public string Description { get; set; }
-                    
-                    //public int Publisher { get; set; }
-                    
-                    //public double Pages { get; set; }
-
-                    //public int Genre { get; set; }
-
-                    //public DateTime DateOfPublishing { get; set; }
+                    Console.WriteLine(String.Format("{0,5} {1,5} {2,5} {3,5} {4,5} {5,5} {6,25} {7,5} {8,5} {9,5} {10,10}",
+                        "Id",
+                        "Title",
+                        "Recommense",
+                        "Category",
+                        "Price",
+                        "SelfPrice",
+                        "Description",
+                        "Publisher",
+                        "Pages",
+                        "Genre",
+                        "Date of publishing"));
+                    Console.WriteLine(String.Format("{0,5} {1,5} {2,5} {3,5} {4,5} {5,5} {6,25} {7,5} {8,5} {9,5} {10,10}",
+                        item.Id,
+                        item.Title,
+                        item.RecommenceOf.Title,
+                        item.CategoryOf.Name,
+                        item.Price,
+                        item.SelfPrice,
+                        item.Description,
+                        item.AuthorOf.Name,
+                        item.Pages,
+                        item.GenreOf.Name,
+                        item.DateOfPublishing));
                 }
             }
         }

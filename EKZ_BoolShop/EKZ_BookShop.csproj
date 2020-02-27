@@ -74,6 +74,10 @@
     <Compile Include="Migrations\202002261915385_Initilize.designer.cs">
       <DependentUpon>202002261915385_Initilize.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002271623555_Repairing defects.cs" />
+    <Compile Include="Migrations\202002271623555_Repairing defects.designer.cs">
+      <DependentUpon>202002271623555_Repairing defects.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -88,6 +92,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002261915385_Initilize.resx">
       <DependentUpon>202002261915385_Initilize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002271623555_Repairing defects.resx">
+      <DependentUpon>202002271623555_Repairing defects.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

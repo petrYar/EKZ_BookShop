@@ -54,5 +54,7 @@ namespace EKZ_BoolShop.Entity
         public virtual Author AuthorOf { get; set; }
 
         public virtual Publisher PublisherOf { get; set; }
+
+        public virtual Genre GenreOf { get; set; }
     }
 }
