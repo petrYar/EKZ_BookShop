@@ -43,6 +43,7 @@ namespace EKZ_BoolShop.Entity
         [Required, Range(0, int.MaxValue)]
         public double Pages { get; set; }
 
+        [ForeignKey("GenreOf")]
         public int Genre { get; set; }
 
         public DateTime DateOfPublishing { get; set; }

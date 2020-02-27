@@ -33,7 +33,7 @@ namespace EKZ_BoolShop
                         Description = "Smth",
                         Publisher = con.Publisher.First(t => t.Name == "BooksForChildrens").Id,
                         Pages = 56,
-                        Genre = con.Genre.First(t => t.Name == "Fantastic").Id,
+                        Genre = con.Genre.First(t => t.Name == "Fantazy").Id,
                         DateOfPublishing = DateTime.Now
                     });
                 con.SaveChanges();
@@ -188,7 +188,7 @@ namespace EKZ_BoolShop
         {
             using (EFContext context = new EFContext())
             {
-                foreach (var item in context.Book)
+                foreach (var item in context.Book.ToList())
                 {
                     Console.WriteLine(String.Format("{0,5} {1,5} {2,5} {3,5} {4,5} {5,5} {6,25} {7,5} {8,5} {9,5} {10,10}",
                         "Id",
@@ -205,7 +205,7 @@ namespace EKZ_BoolShop
                     Console.WriteLine(String.Format("{0,5} {1,5} {2,5} {3,5} {4,5} {5,5} {6,25} {7,5} {8,5} {9,5} {10,10}",
                         item.Id,
                         item.Title,
-                        item.RecommenceOf.Title,
+                        item.RecommenceOf?.Title,
                         item.CategoryOf.Name,
                         item.Price,
                         item.SelfPrice,
