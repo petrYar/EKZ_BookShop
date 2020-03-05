@@ -21,6 +21,7 @@ namespace EKZ_BoolShop
                 //con.Author.Add(new Author { Name = "Konan",Surname="Doil",Patronymic="Hz..." });
                 //con.Genre.Add(new Genre { Name = "Fantazy" });
                 //con.Publisher.Add(new Publisher { Name = "BooksForChildrens" });
+
                 con.Book.Add(
                     new Book
                     {
@@ -81,7 +82,7 @@ namespace EKZ_BoolShop
                 {
                     case 1: Show(); break;
                     case 2:
-
+                        Add();
                         break;
                     case 3:
 
@@ -217,6 +218,74 @@ namespace EKZ_BoolShop
                     Console.Read();
                 }
             }
+        }
+        static public string Enter(string whatToAdd)
+        {
+            Console.WriteLine("Enter " + whatToAdd);
+            return Console.ReadLine();
+        }
+        static public DateTime EnterDate()
+        {
+            Console.WriteLine("Enter year");
+            int year = 0;
+            int.TryParse(Console.ReadLine(), out year);
+
+            Console.WriteLine("Enter month");
+            int month = 0;
+            int.TryParse(Console.ReadLine(), out month);
+
+            Console.WriteLine("Enter day");
+            int day = 0;
+            int.TryParse(Console.ReadLine(), out day);
+
+            return new DateTime(year, month, day);
+        }
+        static public int EnterInt(string whatToAdd)
+        {
+            Console.WriteLine("Enter number of " + whatToAdd);
+            int num = 0;
+            int.TryParse(Console.ReadLine(), out num);
+            return num;
+        }
+        static public int? EnterRecommence()
+        {
+            Console.WriteLine("Enter number of book that is going to be recommence of this book, if nothing to print just write 0");
+            string text = Console.ReadLine();
+            if (text.Equals("0"))
+                return null;
+            int num = 0;
+            int.TryParse(text, out num);
+            using (EFContext con = new EFContext())
+            {
+                if(null == con.Book.FirstOrDefault(t => t.Id == num))
+                    return null;
+            }
+            return num;
+        }
+        static public int EnterAuthorName(string whatToAdd)
+        {
+            Console.WriteLine("Enter name of " + whatToAdd);
+            int num = 0;
+            int.TryParse(Console.ReadLine(), out num);
+            using (EFContext con = new EFContext())
+            {
+                if (null == con.Author.FirstOrDefault(t => t.Id == num))
+                    return 0;
+            }
+            return num;
+        }
+        static public void Add()
+        {
+            //Book b = new Book()
+            //{
+            //    Title = Enter("title"),
+            //    Price = Enter("price"),
+            //    SelfPrice = Enter("self price of book"),
+            //    Description = Enter("description"),
+            //    Pages = EnterInt("pages"),
+            //    Recommence = EnterRecommence(),
+
+            //}
         }
     }
 }

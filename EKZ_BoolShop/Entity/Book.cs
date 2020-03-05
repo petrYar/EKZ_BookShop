@@ -41,7 +41,7 @@ namespace EKZ_BoolShop.Entity
         public int Publisher { get; set; }
 
         [Required, Range(0, int.MaxValue)]
-        public double Pages { get; set; }
+        public int Pages { get; set; }
 
         [ForeignKey("GenreOf")]
         public int Genre { get; set; }
